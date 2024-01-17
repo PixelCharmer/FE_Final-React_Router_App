@@ -1,106 +1,77 @@
-// CandidatePipeline.js
-
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import AddCandidateModal from './AddCandidateModal';
+import { getCandidates, addCandidate, updateCandidate, deleteCandidate } from './pipelineCRUD';
+import Table from "react-bootstrap/Table";
 
 const CandidatePipeline = () => {
-  const URL = "https://65a21c3d42ecd7d7f0a723e6.mockapi.io/pipeline";
   const [candidates, setCandidates] = useState([]);
   const [editMode, setEditMode] = useState(null);
   const [editedCandidate, setEditedCandidate] = useState({});
   const [newCandidate, setNewCandidate] = useState({ fullName: '', email: '', phone: '', bestRole: '' });
   const [showModal, setShowModal] = useState(false);
 
-  const getCandidates = async () => {
-    try {
-      const response = await fetch(URL);
-      if (!response.ok) {
-        throw new Error("Failed to fetch candidates");
-      }
-      const data = await response.json();
-      setCandidates(data);
-    } catch (error) {
-      console.error("Error fetching candidates:", error.message);
-    }
-  };
-
   useEffect(() => {
-    getCandidates();
+    // Load candidates when the component mounts
+    loadCandidates();
   }, []);
 
-  const splitIntoColumns = (data, columns) => {
-    const result = Array.from({ length: columns }, (_, index) =>
-      data.filter((_, dataIndex) => dataIndex % columns === index)
-    );
-    return result;
+  const loadCandidates = async () => {
+    try {
+      const data = await getCandidates();
+      setCandidates(data);
+    } catch (error) {
+      // Handle error
+    }
   };
-
-  const columns = splitIntoColumns(candidates, 5); // Updated for 5 columns
 
   const handleEdit = (candidate) => {
     setEditMode(candidate.id);
     setEditedCandidate({ ...candidate });
   };
 
-  const handleSave = () => {
-    // Implement the logic to save the edited candidate to the API
-    // For simplicity, let's assume you have an API endpoint to update a candidate
-    // You need to adapt this part based on your actual API structure and update logic
-    fetch(`${URL}/${editedCandidate.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(editedCandidate),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        setEditMode(null);
-        // Refresh the candidate data after saving
-        getCandidates();
-      })
-      .catch((error) => console.error("Error saving candidate:", error.message));
+  const handleSave = async () => {
+    try {
+      await updateCandidate(editedCandidate);
+      setEditMode(null);
+      // Refresh the candidate data after saving
+      loadCandidates();
+    } catch (error) {
+      // Handle error
+    }
   };
 
-  const handleDelete = (jobId) => {
-    fetch(`${URL}/${jobId}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        getCandidates();
-      })
-      .catch((error) => console.error("Error deleting job:", error.message));
+  const handleDelete = async (candidateId) => {
+    try {
+      await deleteCandidate(candidateId);
+      // Refresh the candidate data after deleting
+      loadCandidates();
+    } catch (error) {
+      // Handle error
+    }
   };
 
-
-  const handleAddCandidate = () => {
-    // Implement the logic to add the new candidate to the API
-    // For simplicity, let's assume you have an API endpoint to add a new candidate
-    // You need to adapt this part based on your actual API structure and add logic
-    fetch(URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newCandidate),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        // Refresh the candidate data after adding
-        getCandidates();
-        // Clear the form fields
-        setNewCandidate({ fullName: '', email: '', phone: '', bestRole: '' });
-        // Close the modal
-        setShowModal(false);
-      })
-      .catch((error) => console.error("Error adding candidate:", error.message));
+  const handleAddCandidate = async () => {
+    try {
+      await addCandidate(newCandidate);
+      // Refresh the candidate data after adding
+      loadCandidates();
+      // Clear the form fields
+      setNewCandidate({ fullName: '', email: '', phone: '', bestRole: '' });
+      // Close the modal
+      setShowModal(false);
+    } catch (error) {
+      // Handle error
+    }
   };
-
   return (
     <div>
-      <h1>Candidate Pipeline</h1>
+      <h1 id="header">CANDIDATE PIPELINE</h1>
 
-      <Button variant="success" onClick={() => setShowModal(true)}>
+      <Button id="creation" variant="primary" onClick={() => setShowModal(true)}>
         Add New Candidate
       </Button>
-      <table striped bordered hover variant="secondary">
+      <Table striped bordered hover variant="secondary">
         <thead>
           <tr>
             <th id="tableColor">Name</th>
@@ -112,12 +83,52 @@ const CandidatePipeline = () => {
           </tr>
         </thead>
         <tbody>
-          {columns[0].map((candidate) => (
+          {candidates.map((candidate) => (
             <tr key={candidate.id}>
-              <td id="rowColor">{editMode === candidate.id ? <input type="text" value={editedCandidate.fullName} onChange={(e) => setEditedCandidate({ ...editedCandidate, fullName: e.target.value })} /> : candidate.fullName}</td>
-              <td id="rowColor">{editMode === candidate.id ? <input type="email" value={editedCandidate.email} onChange={(e) => setEditedCandidate({ ...editedCandidate, email: e.target.value })} /> : candidate.email}</td>
-              <td id="rowColor">{editMode === candidate.id ? <input type="phone" value={editedCandidate.phone} onChange={(e) => setEditedCandidate({ ...editedCandidate, phone: e.target.value })} /> : candidate.phone}</td>
-              <td id="rowColor">{editMode === candidate.id ? <input type="text" value={editedCandidate.bestRole} onChange={(e) => setEditedCandidate({ ...editedCandidate, bestRole: e.target.value })} /> : candidate.bestRole}</td>
+              <td id="rowColor">
+                {editMode === candidate.id ? (
+                  <input
+                    type="text"
+                    value={editedCandidate.fullName}
+                    onChange={(e) => setEditedCandidate({ ...editedCandidate, fullName: e.target.value })}
+                  />
+                ) : (
+                  candidate.fullName
+                )}
+              </td>
+              <td id="rowColor">
+                {editMode === candidate.id ? (
+                  <input
+                    type="email"
+                    value={editedCandidate.email}
+                    onChange={(e) => setEditedCandidate({ ...editedCandidate, email: e.target.value })}
+                  />
+                ) : (
+                  candidate.email
+                )}
+              </td>
+              <td id="rowColor">
+                {editMode === candidate.id ? (
+                  <input
+                    type="phone"
+                    value={editedCandidate.phone}
+                    onChange={(e) => setEditedCandidate({ ...editedCandidate, phone: e.target.value })}
+                  />
+                ) : (
+                  candidate.phone
+                )}
+              </td>
+              <td id="rowColor">
+                {editMode === candidate.id ? (
+                  <input
+                    type="text"
+                    value={editedCandidate.bestRole}
+                    onChange={(e) => setEditedCandidate({ ...editedCandidate, bestRole: e.target.value })}
+                  />
+                ) : (
+                  candidate.bestRole
+                )}
+              </td>
               <td id="rowColor">
                 {editMode === candidate.id ? (
                   <div>
@@ -131,12 +142,12 @@ const CandidatePipeline = () => {
                 )}
               </td>
               <td id="rowColor">
-                <Button onClick={() => handleDelete(candidate.id)}>Delete</Button>
+                <Button variant="danger" onClick={() => handleDelete(candidate.id)}>Delete</Button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
 
       <AddCandidateModal
         showModal={showModal}

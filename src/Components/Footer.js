@@ -12,7 +12,7 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className='col-md-6'>
-                        <div className='scroll=up'>
+                        <div className='scrollup'>
                             <a href='#' className='back-to-top'>Back to top</a>
                         </div>
                     </div>

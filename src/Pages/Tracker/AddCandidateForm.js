@@ -43,7 +43,7 @@ export default function AddCandidateForm(props) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button id="creation" variant="primary" onClick={handleShow}>
                 Create New Candidate
             </Button>
 

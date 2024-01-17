@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+<br/>
+<p align="center">
+  <a href="https://github.com/PixelCharmer/FE_Final-React_Router_App">
+    <img src="https://github.com/PixelCharmer/week13_react-app/assets/145899504/769237c9-b855-4f03-8b22-707c8c456b54" alt="Logo" width="300" height="300">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">React Router App</h3>
 
-## Available Scripts
+  <p align="center">
+    A fully functional recruiter dashboard app that has analytics on the homepage and various tracking tables. 
+    <br/>
+    <br/>
+    <a href="https://github.com/PixelCharmer/FE_Final-React_Router_App"><strong>Explore the docs »</strong></a>
+    <br/>
+    <br/>
+  </p>
+</p>
 
-In the project directory, you can run:
+![Forks](https://img.shields.io/github/forks/PixelCharmer/FE_Final-React_Router_App?style=social) ![Stargazers](https://img.shields.io/github/stars/PixelCharmer/FE_Final-React_Router_App?style=social) ![Issues](https://img.shields.io/github/issues/PixelCharmer/FE_Final-React_Router_App) 
 
-### `npm start`
+## Table Of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [License](#license)
+* [Authors](#authors)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## About The Project
 
-### `npm test`
+![Screen Shot](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/88b24cbe-5dab-47eb-8791-021c3218b89a)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is a simple React application that demonstrates the usage of React Router for navigation and includes features like adding, editing, and deleting items. The app has separate pages for managing candidates and jobs, with the ability to perform CRUD (Create, Read, Update, Delete) operations.
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React Router Navigation:** 
+Utilizes React Router for seamless navigation between different pages within the application.
+- **Candidate Tracker Page:** 
+Allows users to track candidates who are currently being considered for open roles, with the ability to add new candidates, update existing ones, and delete candidates.
+- **Job List Page:** 
+Enables users to manage job listings, including adding new jobs, editing job details, and deleting jobs.
+- **Candidate Pipeline"**
+Contains a list of vetted candidates that can be 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Folder Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- src/components: Contains reusable React components.
+- src/pages: Includes page components for different sections of the app.
+- src/App.js: Main entry point where routes are defined.
+- src/App.css: Styling for the entire app.
 
-### `npm run eject`
+## Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  - HTML
+  - JavaScript
+  - Reactjs
+  - JSX
+  
+##### Dependencies: 
+  - npm react-create-app
+  - npm react-router-dom
+  - npm React-Bootstrap
+  - npm Chart.js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##### Styles:
+  - CSS
+  - Bootswatch / Journal
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To get a local copy up and running follow these simple steps
 
-## Learn More
+### Prerequisites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Ensure you have the latest version of npm
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* npm
 
-### Code Splitting
+```sh
+npm -version
+```
+To get the latest version:
+```sh
+npm install npm@latest -g
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Installation
 
-### Analyzing the Bundle Size
+1. Clone the repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```sh
+git clone https://github.com/PixelCharmer/FE_Final-React_Router_App.git
+```
 
-### Making a Progressive Web App
+2. Install NPM packages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```sh
+npm install
+```
 
-### Advanced Configuration
+3. Run Start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```JS
+npm Start
+```
 
-### Deployment
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Use this dashboard to track all aspects of the recruiting process, review valuable metrics, and access important recruiter templates and documents.  
 
-### `npm run build` fails to minify
+![image](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/4e4879df-eb26-41d7-8776-d42ec7741aff)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![image](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/01fce036-2f0d-4fd6-9748-91717098aecc)
+
+![image](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/cffb3981-4425-432d-9de7-6cd09905e30e)
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+- If you have suggestions for adding or removing projects, feel free to open an issue to discuss it, or directly create a pull request after you edit any file with necessary changes.
+
+## License
+
+Distributed under the MIT License. See [LICENSE](https://github.com/PixelCharmer/FE_Final-React_Router_App/blob/main/LICENSE.md) for more information.
+
+## Authors
+
+* **Kari Alcoset** - *Promineo Tech Front End Student* - [Kari Alcoset](https://github.com/PixelCharmer) - *Built Entire Dashboard*

@@ -56,3 +56,37 @@
     font-size: 50px;
     margin-top: 10px;
 }
+
+#frontspace {
+    padding-top: 70px;
+}
+
+#toolboxCard {
+    background-color: rgba(128, 128, 128, 0.652);
+    opacity: 0.89;
+    color: rgb(74, 39, 158);
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 8px 8px 17px 3px rgba(78, 127, 152, 0.69);
+    border-radius: 12px;
+    border: 2px solid rgba(39, 74, 131, 0.443);
+}
+
+#styling {
+    color: rgb(74, 39, 158);
+}
+
+.credit {
+    padding-top: 30px;
+    font-weight: bold;
+}
+
+.scrollup {
+    padding-top: 30px;
+    font-weight: bold;
+}
+
+
+#creation {
+    margin-bottom: 12px;
+}

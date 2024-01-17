@@ -7,6 +7,8 @@ import Sources from './DashCharts/Sources';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Time from './DashCharts/Time';
+import Toolbox from './DashCharts/Toolbox'
 
 
 function DashboardHome() {
@@ -23,10 +25,15 @@ function DashboardHome() {
             <Sources />
           </Col>
         </Row>
+        <Row id="frontspace">
+          <Col sm={9}>
+            <Funnel />
+          </Col>
+          <Col sm={3} id="frontspace">
+            <Toolbox />
+          </Col>
+        </Row>
       </Container>
-      <br></br>
-      <br></br>
-      <Funnel />
     </div>
   );
 }

@@ -15,6 +15,10 @@ const AddJobModal = ({ showModal, handleClose, handleAddJob, newJob, setNewJob }
             <Form.Label>Job</Form.Label>
             <Form.Control type="text" placeholder="Enter job" value={newJob.job} onChange={(e) => setNewJob({ ...newJob, job: e.target.value })} />
           </Form.Group>
+          <Form.Group controlId="formJob">
+            <Form.Label>Req Number</Form.Label>
+            <Form.Control type="text" placeholder="Enter Req#" value={newJob.reqnumber} onChange={(e) => setNewJob({ ...newJob, reqnumber: e.target.value })} />
+          </Form.Group>
           <Form.Group controlId="formDescription">
             <Form.Label>Description</Form.Label>
             <Form.Control as="textarea" placeholder="Enter description" value={newJob.description} onChange={(e) => setNewJob({ ...newJob, description: e.target.value })} />
