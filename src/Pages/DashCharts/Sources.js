@@ -29,7 +29,7 @@ class Sources extends Component {
         }
 
         return (
-            <div>
+            <div id="chartContainer">
                 <CanvasJSChart options={options}
                 />
             </div>
