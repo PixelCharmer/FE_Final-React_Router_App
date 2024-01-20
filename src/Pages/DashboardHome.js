@@ -1,5 +1,3 @@
-// DashboardHome.js
-
 import React from 'react';
 import Funnel from './DashCharts/Funnel';
 import Satisfaction from './DashCharts/Satisfaction';

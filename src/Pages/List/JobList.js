@@ -1,5 +1,3 @@
-// JobList.js
-
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import AddJobModal from './AddJobModal';
@@ -7,7 +5,7 @@ import { getJobs, updateJob, deleteJob, addJob } from './joblistCRUD';
 import Table from "react-bootstrap/Table";
 
 const JobList = () => {
-  const URL = "https://65a214e042ecd7d7f0a71bff.mockapi.io/joblist";
+
   const [jobs, setJobs] = useState([]);
   const [editMode, setEditMode] = useState(null);
   const [editedJob, setEditedJob] = useState({});
@@ -71,7 +69,7 @@ const JobList = () => {
     }
   };
   return (
-    <div>
+    <div className='container-fluid'>
       <h1 id="header">JOB LIST</h1>
 
       <Button id="creation" variant="primary" onClick={() => setShowModal(true)}>

@@ -1,5 +1,3 @@
-// CandidateTracker.js
-
 import React from 'react';
 import { useEffect, useState } from 'react';
 import AddCandidateForm from './AddCandidateForm';

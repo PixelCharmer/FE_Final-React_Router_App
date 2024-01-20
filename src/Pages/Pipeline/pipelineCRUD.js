@@ -1,5 +1,3 @@
-// api.js
-
 const URL = "https://65a21c3d42ecd7d7f0a723e6.mockapi.io/pipeline";
 
 export const getCandidates = async () => {

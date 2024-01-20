@@ -1,5 +1,3 @@
-// joblistCRUD.js
-
 const URL = "https://65a214e042ecd7d7f0a71bff.mockapi.io/joblist";
 
 export const getJobs = async () => {
