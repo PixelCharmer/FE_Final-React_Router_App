@@ -32,7 +32,7 @@ const JobList = () => {
     return result;
   };
 
-  const columns = splitIntoColumns(jobs, 7); // Adjust the number of columns as needed
+  const columns = splitIntoColumns(jobs, 6); // Adjust the number of columns as needed
 
   const handleEdit = (job) => {
     setEditMode(job.id);
