@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts';
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+let CanvasJSChart = CanvasJSReact.CanvasJSChart;
  
 class Funnel extends Component {
 	render() {
-		var dataPoint;
-		var total;
+		let dataPoint;
+		let total;
 		const options = {
 			theme: "light",
 			animationEnabled: true,
@@ -23,14 +23,14 @@ class Funnel extends Component {
 					{ y: 265, label: "Applications" },
 					{ y: 134, label: "Interviewed" },
 					{ y: 48, label: "Assessment" },
-					{ y: 26, label: "Hired" }
+					{ y: 16, label: "Hired" }
 				]
 			}]
 		}
 		//calculate percentage
 		dataPoint = options.data[0].dataPoints;
 		total = dataPoint[0].y;
-		for(var i = 0; i < dataPoint.length; i++) {
+		for(let i = 0; i < dataPoint.length; i++) {
 			if(i === 0) {
 				options.data[0].dataPoints[i].percentage = 100;
 			} else {

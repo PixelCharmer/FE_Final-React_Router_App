@@ -21,11 +21,12 @@ class Satisfaction extends Component {
                 indexLabel: "{name}: {y}",
                 yValueFormatString: "#,###'%'",
                 dataPoints: [
-                    { name: "Unsatisfied", y: 5 },
-                    { name: "Very Unsatisfied", y: 31 },
+                    { name: "Unsatisfied", y: 12 },
+                    { name: "Very Unsatisfied", y: 6 },
                     { name: "Very Satisfied", y: 40 },
-                    { name: "Satisfied", y: 17 },
-                    { name: "Neutral", y: 7 }
+                    { name: "Satisfied", y: 18 },
+                    { name: "Neutral", y: 11 },
+                    { name: "Simi-Satisfied", y: 13 }
                 ]
             }]
         }
