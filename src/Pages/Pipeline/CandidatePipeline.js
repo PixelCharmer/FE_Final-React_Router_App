@@ -66,7 +66,7 @@ const CandidatePipeline = () => {
   };
   return (
     <div className='container-fluid'>
-      <h1 id="header">CANDIDATE PIPELINE</h1>
+      <h1 id="header">VETTED CANDIDATE PIPELINE</h1>
 
       <Button id="creation" variant="primary" onClick={() => setShowModal(true)}>
         Add New Candidate

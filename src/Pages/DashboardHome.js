@@ -11,7 +11,7 @@ import Toolbox from './DashCharts/Toolbox'
 function DashboardHome() {
   return (
     <div>
-      <h2 id="dashHome">Recruitment Analytics</h2>
+      <h2 id="dashHome">RECRUITMENT ANALYTICS</h2>
 
       <Container>
         <Row>

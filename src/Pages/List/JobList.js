@@ -70,7 +70,7 @@ const JobList = () => {
   };
   return (
     <div className='container-fluid'>
-      <h1 id="header">JOB LIST</h1>
+      <h1 id="header">JOB OPENINGS LIST</h1>
 
       <Button id="creation" variant="primary" onClick={() => setShowModal(true)}>
         Add New Job

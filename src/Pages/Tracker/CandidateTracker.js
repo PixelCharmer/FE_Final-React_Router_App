@@ -1,93 +1,174 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import AddCandidateForm from './AddCandidateForm';
-import CandidateTable from './CandidateTable';
+import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import AddTrackerModal from './AddTrackerModal';
+import { getTracker, updateTracker, deleteTracker, addTracker } from './trackerCRUD';
+import Table from "react-bootstrap/Table";
 
-export default function CandidateTracker() {
-const URL = "https://659afe2cd565feee2daabf11.mockapi.io/api/tracker";
-const [candidates, setCandidates] = useState([]);
+const CandidateTracker = () => {
 
-  const getCandidates = async () => {
-    try {
-      const response = await fetch(URL);
-      if (!response.ok) {
-        throw new Error("Failed to fetch candidates");
-      }
-      const data = await response.json();
-      setCandidates(data);
-    } catch (error) {
-      console.error("Error fetching candidates:", error.message);
-    }
-  };
+    const [Trackers, setTrackers] = useState([]);
+    const [editMode, setEditMode] = useState(null);
+    const [editedTracker, setEditedTracker] = useState({});
+    const [newTracker, setNewTracker] = useState({ candidateName: '', jobTitle: '', stage: '' });
+    const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    getCandidates();
-  }, []);
+    const getTrackersData = async () => {
+        try {
+            const data = await getTracker();
+            setTrackers(data);
+        } catch (error) {
+            console.error("Error fetching Trackers:", error.message);
+        }
+    };
 
-  const deleteCandidate = async (idToDelete) => {
-    try {
-      await fetch(`${URL}/${idToDelete}`, {
-        method: "DELETE",
-      });
+    useEffect(() => {
+        getTrackersData();
+    }, []);
 
-      setCandidates((prevCandidates) =>
-        prevCandidates.filter((candidate) => candidate.id !== idToDelete)
-      );
-    } catch (error) {
-      console.error("Error deleting candidate:", error.message);
-    }
-  };
+    const splitIntoColumns = (data, columns) => {
+        const result = Array.from({ length: columns }, (_, index) =>
+            data.filter((_, dataIndex) => dataIndex % columns === index)
+        );
+        return result;
+    };
 
-  const postNewCandidate = async (newCandidate) => {
-    try {
-      const response = await fetch(URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newCandidate),
-      });
+    const columns = splitIntoColumns(Trackers, 5); // Adjust the number of columns as needed
 
-      if (!response.ok) {
-        throw new Error("Failed to add new candidate");
-      }
+    const handleEdit = (Tracker) => {
+        setEditMode(Tracker.id);
+        setEditedTracker({ ...Tracker });
+    };
 
-      const newCandidateWithId = await response.json();
-      setCandidates((prevCandidates) => [...prevCandidates, newCandidateWithId]);
-    } catch (error) {
-      console.error("Error adding new candidate:", error.message);
-    }
-  };
+    const handleSave = async () => {
+        try {
+            await updateTracker(editedTracker);
+            setEditMode(null);
+            getTrackersData();
+        } catch (error) {
+            console.error("Error saving Tracker:", error.message);
+        }
+    };
 
-  const updateCandidate = async (updatedCandidate) => {
-    try {
-      const response = await fetch(`${URL}/${updatedCandidate.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedCandidate),
-      });
+    const handleDelete = async (TrackerId) => {
+        try {
+            await deleteTracker(TrackerId);
+            getTrackersData();
+        } catch (error) {
+            console.error("Error deleting Tracker:", error.message);
+        }
+    };
 
-      if (!response.ok) {
-        throw new Error("Failed to update candidate");
-      }
+    const handleAddTracker = async () => {
+        try {
+            await addTracker(newTracker);
+            getTrackersData();
+            setNewTracker({ candidateName: '', jobTitle: '', stage: '' });
+            setShowModal(false);
+        } catch (error) {
+            console.error("Error adding Tracker:", error.message);
+        }
+    };
+    return (
+        <div className='container-fluid'>
+            <h1 id="header">CANDIDATE STATUS TRACKER</h1>
 
-      const updatedCandidateResponse = await response.json();
-      const newCandidateArray = candidates.map((candidate) =>
-        candidate.id === updatedCandidateResponse.id ? updatedCandidateResponse : candidate
-      );
-      setCandidates(newCandidateArray);
-    } catch (error) {
-      console.error("Error updating candidate:", error.message);
-    }
-  };
+            <Button id="creation" variant="primary" onClick={() => setShowModal(true)}>
+                Add New Candidate
+            </Button>
+            <Table striped bordered hover variant="secondary">
+                <thead>
+                    <tr>
+                        <th id="tableColor">Candidate Name</th>
+                        <th id="tableColor">Job Title</th>
+                        <th id="tableColor">Status</th>
+                        <th id="tableColor">Update</th>
+                        <th id="tableColor">Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="rowColor">
+                    {columns.map((column, columnIndex) => (
+                        column.map((Tracker) => (
+                            <tr key={Tracker.id}>
+                                <td id="rowColor">
+                                    {editMode === Tracker.id ? (
+                                        <input
+                                            type="text"
+                                            value={editedTracker.candidateName}
+                                            onChange={(e) => setEditedTracker({ ...editedTracker, candidateName: e.target.value })}
+                                        />
+                                    ) : (
+                                        Tracker.candidateName
+                                    )}
+                                </td>
 
-  return (
-    <div className="App" id="pageTitle">
-      <h1 className="display-6 fw-bold" id="header">
-        CANDIDATE TRACKER
-      </h1>
-      <AddCandidateForm clickAdd={postNewCandidate} />
-      <CandidateTable candidates={candidates} clickDelete={deleteCandidate} clickUpdate={updateCandidate} />
-    </div>
-  );
+                                <td id="rowColor">
+                                    {editMode === Tracker.id ? (
+                                        <input
+                                            type="text"
+                                            value={editedTracker.jobTitle}
+                                            onChange={(e) => setEditedTracker({ ...editedTracker, jobTitle: e.target.value })}
+                                        />
+                                    ) : (
+                                        Tracker.jobTitle
+                                    )}
+                                </td>
+                                <td id="rowColor">
+                                    {editMode === Tracker.id ? (
+                                        <select
+                                            id="stageInput"
+                                            name="stage"
+                                            value={editedTracker.stage}
+                                            onChange={(e) => setEditedTracker({ ...editedTracker, stage: e.target.value })}
+                                        >
+                                            <option value="Under Review">Under Review</option>
+                                            <option value="Interviewing">Interviewing</option>
+                                            <option value="Pending Feedback">Pending Feedback</option>
+                                            <option value="Offer Extended">Offer Extended</option>
+                                            <option value="Offer Rescinded">Offer Rescinded</option>
+                                            <option value="Offer Accepted">Offer Accepted</option>
+                                            <option value="Offer Rejected">Offer Rejected</option>
+                                        </select>
+                                    ) : (
+                                        Tracker.stage
+                                    )}
+                                </td>
 
+                                <td id="rowColor">
+                                    {editMode === Tracker.id ? (
+                                        <div>
+                                            <Button variant="success" onClick={handleSave}>
+                                                Save
+                                            </Button>
+                                            <Button variant="danger" onClick={() => setEditMode(null)}>
+                                                Cancel
+                                            </Button>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <Button variant="info" onClick={() => handleEdit(Tracker)}>
+                                                Edit
+                                            </Button>
+                                        </div>
+                                    )}
+                                </td>
+                                <td id="rowColor">
+                                    <Button variant="danger" onClick={() => handleDelete(Tracker.id)}>Delete</Button>
+                                </td>
+                            </tr>
+                        ))
+                    ))}
+                </tbody>
+            </Table>
 
-}
+            <AddTrackerModal
+                showModal={showModal}
+                handleClose={() => setShowModal(false)}
+                handleAddTracker={handleAddTracker}
+                newTracker={newTracker}
+                setNewTracker={setNewTracker}
+            />
+        </div>
+    );
+};
+
+export default CandidateTracker;
