@@ -1,7 +1,13 @@
+
+/* importing fonts used within the app */
+
 @import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rowdies&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
 
+
+/* All the styling used throughout the app */ 
+ 
 #newCandidateForm {
     border-radius: 25px;
     padding: 20px;
@@ -30,14 +36,14 @@
 }
 
 #tableColor {
-    background-color: rgb(180, 204, 205);
+    background-color: rgba(28, 204, 232, 0.717);
     border: 1px solid slategray;
     padding-left: 5px;
     color: black;
 }
 
 #rowColor {
-    border: 1px solid slategray;
+    border: 1px solid #278cf2;
     padding: 8px;
     color: black;
 }
@@ -82,4 +88,25 @@
 
 #creation {
     margin-bottom: 12px;
+    background-color: #fc0394e9;
+}
+
+#cancel {
+    background-color: #f51629;
+    border: none;
+}
+
+#edit {
+    background-color: #451af0;
+    border: none;
+}
+
+#delete {
+    background-color: #fa4002;
+    border: none;
+}
+
+#save {
+    background-color: #0d9e22;
+    border: none;
 }

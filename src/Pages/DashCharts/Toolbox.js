@@ -1,5 +1,7 @@
 import Card from 'react-bootstrap/Card';
 
+// used react bootstrap card elements to hold links to various files recruiters need
+
 function Toolbox() {
     return (
         <Card id="toolboxCard">

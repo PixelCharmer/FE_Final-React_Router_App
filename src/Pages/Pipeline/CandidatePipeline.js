@@ -68,10 +68,10 @@ const CandidatePipeline = () => {
     <div className='container-fluid'>
       <h1 id="header">VETTED CANDIDATE PIPELINE</h1>
 
-      <Button id="creation" variant="primary" onClick={() => setShowModal(true)}>
+      <Button id="creation" onClick={() => setShowModal(true)}>
         Add New Candidate
       </Button>
-      <Table striped bordered hover variant="secondary">
+      <Table striped bordered hover id="pipelineTable">
         <thead>
           <tr>
             <th id="tableColor">Name</th>
@@ -132,17 +132,17 @@ const CandidatePipeline = () => {
               <td id="rowColor">
                 {editMode === candidate.id ? (
                   <div>
-                    <Button variant="success" onClick={handleSave}>Save</Button>
-                    <Button variant="danger" onClick={() => setEditMode(null)}>Cancel</Button>
+                    <Button id="save" onClick={handleSave}>Save</Button>
+                    <Button id="cancel" onClick={() => setEditMode(null)}>Cancel</Button>
                   </div>
                 ) : (
                   <div>
-                    <Button variant="info" onClick={() => handleEdit(candidate)}>Edit</Button>
+                    <Button id="edit" onClick={() => handleEdit(candidate)}>Edit</Button>
                   </div>
                 )}
               </td>
               <td id="rowColor">
-                <Button variant="danger" onClick={() => handleDelete(candidate.id)}>Delete</Button>
+                <Button id="delete" onClick={() => handleDelete(candidate.id)}>Delete</Button>
               </td>
             </tr>
           ))}

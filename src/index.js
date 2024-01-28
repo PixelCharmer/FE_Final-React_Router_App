@@ -1,22 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './App.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import SSRProvider from 'react-bootstrap/SSRProvider';
 
-
+// setting up the total app with the necessary imported dependencies
+// used SSRProvider to wrap around the App as development best practices and server-side rendering
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SSRProvider>
+    <SSRProvider> 
       <App />
     </SSRProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

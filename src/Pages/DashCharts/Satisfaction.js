@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts';
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
+// created the doughnut chart with canvasjs
+
 class Satisfaction extends Component {
     render() {
         const options = {

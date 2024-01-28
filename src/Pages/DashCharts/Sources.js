@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
+// created the pie chart with canvasjs
+
 class Sources extends Component {
     render() {
         const options = {

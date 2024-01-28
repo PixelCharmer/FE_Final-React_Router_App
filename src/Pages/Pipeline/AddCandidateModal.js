@@ -1,6 +1,11 @@
 import React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
+// created a modal with dialog for adding a new candidate to the pipeline table
+
+// defines a functional component that recives several props: showModal, handleClose, handleAddCandidate, newCandidate, and setNewCandidate
+// the props control the modal and the visibility of the modal
+
 const AddCandidateModal = ({ showModal, handleClose, handleAddCandidate, newCandidate, setNewCandidate }) => {
   return (
     <Modal show={showModal} onHide={handleClose}>
@@ -8,6 +13,9 @@ const AddCandidateModal = ({ showModal, handleClose, handleAddCandidate, newCand
         <Modal.Title>Add New Candidate</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+
+        {/* inside the modal are forms that holds the input fields needed for adding a newly vetted candidate to the table */}
+
         <Form>
           <Form.Group controlId="formName">
             <Form.Label>Name</Form.Label>
@@ -28,6 +36,9 @@ const AddCandidateModal = ({ showModal, handleClose, handleAddCandidate, newCand
         </Form>
       </Modal.Body>
       <Modal.Footer>
+
+        {/* the modal footer holds the buttons that control form inputs or closes the modal */}
+
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>

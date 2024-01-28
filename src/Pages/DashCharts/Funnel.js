@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts';
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
+// created the funnel chart with canvasjs
  
 class Funnel extends Component {
 	render() {

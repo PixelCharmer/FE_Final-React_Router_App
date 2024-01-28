@@ -1,5 +1,11 @@
+
+// pulling a mock api to dynamically be used in the CRUD functions 
+
 const URL = "https://65a21c3d42ecd7d7f0a723e6.mockapi.io/pipeline";
 
+
+// fetches the list of candidates from the API with a GET method
+// returns a promise that resolves to the array of cabdidate objects
 export const getCandidates = async () => {
   try {
     const response = await fetch(URL);
@@ -14,6 +20,8 @@ export const getCandidates = async () => {
   }
 };
 
+// can add a new candidate to the API with the POST method
+// returns a promise that resolves to the added candidate object
 export const addCandidate = async (newCandidate) => {
   try {
     const response = await fetch(URL, {
@@ -31,6 +39,8 @@ export const addCandidate = async (newCandidate) => {
   }
 };
 
+// abilty to update existing candidates currently in the array using the PUT method
+// returns a promise that resolves to the updated candidates object
 export const updateCandidate = async (editedCandidate) => {
   try {
     const response = await fetch(`${URL}/${editedCandidate.id}`, {
@@ -48,6 +58,8 @@ export const updateCandidate = async (editedCandidate) => {
   }
 };
 
+// creates the option to delete indiviual objects with the index number using the DELETE method
+// returns a promise that resolves to the deleted candidate objects
 export const deleteCandidate = async (candidateId) => {
   try {
     const response = await fetch(`${URL}/${candidateId}`, {

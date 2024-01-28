@@ -1,6 +1,11 @@
 import React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
+// created a modal with dialog for adding a candidate the tracker table
+
+// defines a functional component that recives several props: showModal, handleClose, handleAddTracker, newTracker, setNewTracker
+// the props control the modal and the visibility of the modal
+
 const AddTrackerModal = ({ showModal, handleClose, handleAddTracker, newTracker, setNewTracker }) => {
     return (
         <Modal show={showModal} onHide={handleClose}>
@@ -8,6 +13,9 @@ const AddTrackerModal = ({ showModal, handleClose, handleAddTracker, newTracker,
                 <Modal.Title>Create New Candidate</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+
+                {/* inside the modal are forms that holds the input fields needed for posting a new candidate  */}
+
                 <Form>
                     <Form.Group controlID="formName">
                         <Form.Label>Candidate Name</Form.Label>
@@ -39,6 +47,9 @@ const AddTrackerModal = ({ showModal, handleClose, handleAddTracker, newTracker,
                 </Form>
             </Modal.Body>
             <Modal.Footer>
+
+                {/* the modal footer holds the buttons that control form inputs or closes the modal  */}
+
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>

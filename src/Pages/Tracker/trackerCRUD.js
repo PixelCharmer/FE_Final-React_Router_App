@@ -1,5 +1,10 @@
+
+// pulling a mock api to dynamically be used in the CRUD functions 
+
 const URL = "https://659afe2cd565feee2daabf11.mockapi.io/api/tracker";
 
+// fetches the list of tracker from the API with a GET method
+// returns a promise that resolves to the array of tracker objects
 export const getTracker = async () => {
   try {
     const response = await fetch(URL);
@@ -13,6 +18,8 @@ export const getTracker = async () => {
   }
 };
 
+// abilty to update existing trackers currently in the array using the PUT method
+// returns a promise that resolves to the updated tracker object
 export const updateTracker = async (editedTracker) => {
   try {
     const response = await fetch(`${URL}/${editedTracker.id}`, {
@@ -29,6 +36,8 @@ export const updateTracker = async (editedTracker) => {
   }
 };
 
+// creates the option to delete indiviual objects with the index number using the DELETE method
+// returns a promise that resolves to the deleted tracker objects
 export const deleteTracker = async (trackerId) => {
   try {
     const response = await fetch(`${URL}/${trackerId}`, {
@@ -43,6 +52,8 @@ export const deleteTracker = async (trackerId) => {
   }
 };
 
+// can add a new tracker to the API with the POST method
+// returns a promise that resolves to the added tracker object
 export const addTracker= async (newTracker) => {
   try {
     const response = await fetch(URL, {

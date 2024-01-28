@@ -4,7 +4,11 @@ import AddJobModal from './AddJobModal';
 import { getJobs, updateJob, deleteJob, addJob } from './joblistCRUD';
 import Table from "react-bootstrap/Table";
 
+// creating the table and setting up the data and props to have CRUD fuctions used 
+
 const JobList = () => {
+
+  {/* created the state hooks that will be called in the CRUD fuctions */}
 
   const [jobs, setJobs] = useState([]);
   const [editMode, setEditMode] = useState(null);
@@ -32,7 +36,7 @@ const JobList = () => {
     return result;
   };
 
-  const columns = splitIntoColumns(jobs, 6); // Adjust the number of columns as needed
+  const columns = splitIntoColumns(jobs, 6);
 
   const handleEdit = (job) => {
     setEditMode(job.id);
@@ -72,10 +76,10 @@ const JobList = () => {
     <div className='container-fluid'>
       <h1 id="header">JOB OPENINGS LIST</h1>
 
-      <Button id="creation" variant="primary" onClick={() => setShowModal(true)}>
+      <Button id="creation" onClick={() => setShowModal(true)}>
         Add New Job
       </Button>
-      <Table striped bordered hover variant="secondary">
+      <Table striped bordered hover id="jobTable">
         <thead>
           <tr>
             <th id="tableColor">Req#</th>
@@ -87,7 +91,7 @@ const JobList = () => {
           </tr>
         </thead>
         <tbody id="rowColor">
-          {columns.map((column, columnIndex) => (
+          {columns.map((column) => (
             column.map((job) => (
               <tr key={job.id}>
                 <td id="rowColor">
@@ -137,23 +141,23 @@ const JobList = () => {
                 <td id="rowColor">
                   {editMode === job.id ? (
                     <div>
-                      <Button variant="success" onClick={handleSave}>
+                      <Button id="save" onClick={handleSave}>
                         Save
                       </Button>
-                      <Button variant="danger" onClick={() => setEditMode(null)}>
+                      <Button id="cancel" onClick={() => setEditMode(null)}>
                         Cancel
                       </Button>
                     </div>
                   ) : (
                     <div>
-                      <Button variant="info" onClick={() => handleEdit(job)}>
+                      <Button id="edit" onClick={() => handleEdit(job)}>
                         Edit
                       </Button>
                     </div>
                   )}
                 </td>
                 <td id="rowColor">
-                  <Button variant="danger" onClick={() => handleDelete(job.id)}>Delete</Button>
+                  <Button id="delete" onClick={() => handleDelete(job.id)}>Delete</Button>
                 </td>
               </tr>
             ))

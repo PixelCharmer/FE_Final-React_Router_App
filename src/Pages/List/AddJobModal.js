@@ -1,6 +1,11 @@
 import React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
+// created a modal with dialog for adding a new job to the openings table 
+
+// defines a functional component that recives several props: showModal, handleClose, handleAddJob, newJob, and setNewJob
+// the props control the modal and the visibility of the modal
+
 const AddJobModal = ({ showModal, handleClose, handleAddJob, newJob, setNewJob }) => {
   return (
     <Modal show={showModal} onHide={handleClose}>
@@ -8,6 +13,9 @@ const AddJobModal = ({ showModal, handleClose, handleAddJob, newJob, setNewJob }
         <Modal.Title>Add New Job</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+
+        {/* inside the modal are forms that holds the input fields needed for posting a new job opening */}
+
         <Form>
           <Form.Group controlId="formJob">
             <Form.Label>Job</Form.Label>
@@ -28,6 +36,9 @@ const AddJobModal = ({ showModal, handleClose, handleAddJob, newJob, setNewJob }
         </Form>
       </Modal.Body>
       <Modal.Footer>
+
+        {/* the modal footer holds the buttons that control form inputs or closes the modal */}
+
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>

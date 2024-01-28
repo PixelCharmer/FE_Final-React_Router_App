@@ -7,12 +7,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Toolbox from './DashCharts/Toolbox'
 
+// this is the main dashboard page with the recruitment analytics 
+// formatted with Bootstraps grid system - container, row, col
+// the grid columns are then filled with the charts and the 1 card toolbox
+
 
 function DashboardHome() {
   return (
     <div>
       <h2 id="dashHome">RECRUITMENT ANALYTICS</h2>
-
       <Container>
         <Row>
           <Col sm>

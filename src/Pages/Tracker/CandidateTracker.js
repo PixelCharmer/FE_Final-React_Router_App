@@ -72,10 +72,10 @@ const CandidateTracker = () => {
         <div className='container-fluid'>
             <h1 id="header">CANDIDATE STATUS TRACKER</h1>
 
-            <Button id="creation" variant="primary" onClick={() => setShowModal(true)}>
+            <Button id="creation" onClick={() => setShowModal(true)}>
                 Add New Candidate
             </Button>
-            <Table striped bordered hover variant="secondary">
+            <Table striped bordered hover id="trackerTable">
                 <thead>
                     <tr>
                         <th id="tableColor">Candidate Name</th>
@@ -86,7 +86,7 @@ const CandidateTracker = () => {
                     </tr>
                 </thead>
                 <tbody id="rowColor">
-                    {columns.map((column, columnIndex) => (
+                    {columns.map((column) => (
                         column.map((Tracker) => (
                             <tr key={Tracker.id}>
                                 <td id="rowColor">
@@ -136,23 +136,23 @@ const CandidateTracker = () => {
                                 <td id="rowColor">
                                     {editMode === Tracker.id ? (
                                         <div>
-                                            <Button variant="success" onClick={handleSave}>
+                                            <Button id="save" onClick={handleSave}>
                                                 Save
                                             </Button>
-                                            <Button variant="danger" onClick={() => setEditMode(null)}>
+                                            <Button id="cancel" onClick={() => setEditMode(null)}>
                                                 Cancel
                                             </Button>
                                         </div>
                                     ) : (
                                         <div>
-                                            <Button variant="info" onClick={() => handleEdit(Tracker)}>
+                                            <Button id="edit" onClick={() => handleEdit(Tracker)}>
                                                 Edit
                                             </Button>
                                         </div>
                                     )}
                                 </td>
                                 <td id="rowColor">
-                                    <Button variant="danger" onClick={() => handleDelete(Tracker.id)}>Delete</Button>
+                                    <Button id="delete" onClick={() => handleDelete(Tracker.id)}>Delete</Button>
                                 </td>
                             </tr>
                         ))

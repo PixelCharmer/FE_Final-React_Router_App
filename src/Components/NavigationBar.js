@@ -1,6 +1,12 @@
+
+// importing the necessary dependencies 
+
 import React from 'react';
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+
+// used React Bootstrap to build out the navbar located at the top of each page
+// navbar contains links to each of the pages as well as back to the home page
 
 export default function NavigationBar () {
   return (
