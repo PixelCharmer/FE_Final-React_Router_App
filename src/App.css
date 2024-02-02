@@ -76,12 +76,12 @@
 }
 
 .credit {
-    padding-top: 30px;
+    padding-top: 80px;
     font-weight: bold;
 }
 
 .scrollup {
-    padding-top: 30px;
+    padding-top: 80px;
     font-weight: bold;
 }
 
@@ -109,4 +109,12 @@
 #save {
     background-color: #0d9e22;
     border: none;
+}
+
+#header2 {
+    text-align: center;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }

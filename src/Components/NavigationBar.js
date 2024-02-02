@@ -21,6 +21,9 @@ export default function NavigationBar () {
             <Nav.Link as={NavLink} to="/">
               Dashboard
             </Nav.Link>
+            <Nav.Link as={NavLink} to="/workflow">
+              Recruiting Workflow
+            </Nav.Link>
             <Nav.Link as={NavLink} to="/pipeline">
               Candidate Pipeline
             </Nav.Link>

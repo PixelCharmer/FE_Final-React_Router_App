@@ -40,6 +40,8 @@ This is a simple React application that demonstrates the usage of React Router f
 
 - **React Router Navigation:** 
 Utilizes React Router for seamless navigation between different pages within the application.
+- **Recruiting Workflow:**
+An interactive flow chart detailing the steps involved with the recruitment process. 
 - **Candidate Tracker Page:** 
 Allows users to track candidates who are currently being considered for open roles, with the ability to add new candidates, update existing ones, and delete candidates.
 - **Job List Page:** 
@@ -66,6 +68,7 @@ Contains a list of vetted candidates that can be
   - npm react-router-dom
   - npm React-Bootstrap
   - npm Chart.js
+  - npm beautiful-react-diagrams
 
 ##### Styles:
   - CSS
@@ -112,6 +115,8 @@ npm Start
 ## Usage
 
 Use this dashboard to track all aspects of the recruiting process, review valuable metrics, and access important recruiter templates and documents.  
+
+![image](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/542bc8d8-82b5-494d-8f65-18da5aec9662)
 
 ![image](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/4e4879df-eb26-41d7-8776-d42ec7741aff)
 
