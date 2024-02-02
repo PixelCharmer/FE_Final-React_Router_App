@@ -16,6 +16,8 @@ const JobList = () => {
   const [newJob, setNewJob] = useState({ reqnumber: '', job: '', description: '', hiringManager: '' });
   const [showModal, setShowModal] = useState(false);
 
+
+  // fetching the job data from the API and updates the state
   const getJobsData = async () => {
     try {
       const data = await getJobs();
@@ -25,10 +27,12 @@ const JobList = () => {
     }
   };
 
+  // using a hook  to fetch job data when the component mounts
   useEffect(() => {
     getJobsData();
   }, []);
 
+  //  takes the API list and splits the data into columns for display
   const splitIntoColumns = (data, columns) => {
     const result = Array.from({ length: columns }, (_, index) =>
       data.filter((_, dataIndex) => dataIndex % columns === index)
@@ -38,11 +42,13 @@ const JobList = () => {
 
   const columns = splitIntoColumns(jobs, 6);
 
-  const handleEdit = (job) => {
+    // handles the update CRUD operation 
+    const handleEdit = (job) => {
     setEditMode(job.id);
     setEditedJob({ ...job });
   };
 
+  // saves the updated data to the API
   const handleSave = async () => {
     try {
       await updateJob(editedJob);
@@ -53,6 +59,7 @@ const JobList = () => {
     }
   };
 
+  // handles the delete CRUD operation 
   const handleDelete = async (jobId) => {
     try {
       await deleteJob(jobId);
@@ -62,6 +69,7 @@ const JobList = () => {
     }
   };
 
+  // handles the create CRUD operation 
   const handleAddJob = async () => {
     try {
       await addJob(newJob);
@@ -72,6 +80,8 @@ const JobList = () => {
       console.error("Error adding job:", error.message);
     }
   };
+
+  // creating the table for the API data to populate
   return (
     <div className='container-fluid'>
       <h1 id="header">JOB OPENINGS LIST</h1>
@@ -165,6 +175,7 @@ const JobList = () => {
         </tbody>
       </Table>
 
+      {/* a popup occurs to add new records to the API data */}
       <AddJobModal
         showModal={showModal}
         handleClose={() => setShowModal(false)}

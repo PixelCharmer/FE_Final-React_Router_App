@@ -32,7 +32,7 @@
 
 ## About The Project
 
-![Screen Shot](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/88b24cbe-5dab-47eb-8791-021c3218b89a)
+![Screen Shot](https://github.com/PixelCharmer/FE_Final-React_Router_App/assets/145899504/c00047ea-0fd8-43c5-8a60-60f8f20ef83d)
 
 This is a simple React application that demonstrates the usage of React Router for navigation and includes features like adding, editing, and deleting items. The app has separate pages for managing candidates and jobs, with the ability to perform CRUD (Create, Read, Update, Delete) operations.
 
@@ -116,13 +116,17 @@ npm Start
 
 Use this dashboard to track all aspects of the recruiting process, review valuable metrics, and access important recruiter templates and documents.  
 
-![image](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/542bc8d8-82b5-494d-8f65-18da5aec9662)
+### Node Based Workflow Flow Chart 
+![image](https://github.com/PixelCharmer/FE_Final-React_Router_App/assets/145899504/c160d1a6-2ae1-413d-a4a1-6c1723d025a2)
 
-![image](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/4e4879df-eb26-41d7-8776-d42ec7741aff)
+### Vetted Candidate Pipeline
+![image](https://github.com/PixelCharmer/FE_Final-React_Router_App/assets/145899504/3d0deec7-15d6-499c-9e7a-f1542f810442)
 
-![image](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/01fce036-2f0d-4fd6-9748-91717098aecc)
+### Job Openings
+![image](https://github.com/PixelCharmer/FE_Final-React_Router_App/assets/145899504/a6816f11-0e4b-45ca-bfcd-458051a57cb6)
 
-![image](https://github.com/PixelCharmer/Week14_React-Movie-Reviews/assets/145899504/cffb3981-4425-432d-9de7-6cd09905e30e)
+### Active Candidate Tracker
+![image](https://github.com/PixelCharmer/FE_Final-React_Router_App/assets/145899504/d68a89a7-6c40-464b-9f13-88d7a8e0bdee)
 
 ## Contributing
 

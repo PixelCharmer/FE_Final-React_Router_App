@@ -68,6 +68,8 @@ const CandidateTracker = () => {
             console.error("Error adding Tracker:", error.message);
         }
     };
+
+       // creating the table for the API data to populate
     return (
         <div className='container-fluid'>
             <h1 id="header">CANDIDATE STATUS TRACKER</h1>
@@ -160,6 +162,7 @@ const CandidateTracker = () => {
                 </tbody>
             </Table>
 
+            {/* a popup occurs to add new records to the API data */}
             <AddTrackerModal
                 showModal={showModal}
                 handleClose={() => setShowModal(false)}

@@ -64,6 +64,8 @@ const CandidatePipeline = () => {
       // Handle error
     }
   };
+
+   // creating the table for the API data to populate
   return (
     <div className='container-fluid'>
       <h1 id="header">VETTED CANDIDATE PIPELINE</h1>
@@ -149,6 +151,7 @@ const CandidatePipeline = () => {
         </tbody>
       </Table>
 
+      {/* a popup occurs to add new records to the API data */}
       <AddCandidateModal
         showModal={showModal}
         handleClose={() => setShowModal(false)}

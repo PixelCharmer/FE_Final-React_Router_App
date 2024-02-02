@@ -2,6 +2,8 @@
 
 import Diagram, { createSchema, useSchema } from 'beautiful-react-diagrams';
 
+// defining the nodes and links to represent the structure of the flowchart
+// each node has an 'id', 'content' (text representing the node), and 'coordinates' (position on the canvas).
 const initialSchema = createSchema({
     nodes: [
       { id: 'node-1', content: 'Need Indentified', coordinates: [100, 60], },
@@ -26,6 +28,8 @@ const initialSchema = createSchema({
       { id: 'node-20', content: 'Send Rejection', coordinates: [900, 360], },
       { id: 'node-21', content: 'Start', coordinates: [70, 0], },
     ],
+
+    // creating the lines that connect to specific nodes to display the workflow
     links: [
       { input: 'node-1',  output: 'node-2' },
       { input: 'node-2',  output: 'node-3' },
@@ -53,10 +57,13 @@ const initialSchema = createSchema({
     ],
   });
 
+// rendering a diagram, passing the schema state and an onChange callback to handle any changes in the diagram
 const FlowChart = () => {
   // create diagrams schema
   const [schema, { onChange }] = useSchema(initialSchema);
 
+
+// displaying the flowchart based on the provided schema
   return (
     <div style={{ height: '38.5rem' }}>
       <h1 id="header2" align="center">RECRUITMENT PROCESS WORKFLOW</h1>
